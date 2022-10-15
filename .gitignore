@@ -1,0 +1,18 @@
+### Linux ###
+*~
+\#*\#
+
+### Node ###
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+dist/
+
+### Cache ###
+*.tsbuildinfo
+.eslintcache
+.yarn/cache
+
+### Env ###
+.env
+.env.local
