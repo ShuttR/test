@@ -3,13 +3,16 @@ name: Build and Deploy Storybook
 on:
   push:
     branches: ["main"]
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     environment:
@@ -19,11 +22,16 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - run: npm i yarn
+      - name: Setup ⚙️
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18'
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
       - name: Install 🔧
-        run:
-          yarn
-          yarn build:storybook
+        run: yarn
+      - name: Build 🏗️
+        run: yarn build:storybook
       - name: Upload ⬆️
         uses: actions/upload-pages-artifact@v1
         with:

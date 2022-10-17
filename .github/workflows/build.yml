@@ -16,13 +16,14 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup ⚙️
+        uses: actions/setup-node@v3
         with:
           node-version: '16.18.x'
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
       - name: Install 🔧
-        run: yarn install
+        run: yarn
       - name: Launch Linter 👌
         run: yarn lint
   tests:
@@ -31,7 +32,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup ⚙️
+        uses: actions/setup-node@v3
         with:
           node-version: '16.18.x'
           cache: 'yarn'
