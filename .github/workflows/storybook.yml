@@ -1,30 +1,29 @@
 name: Build and Deploy Storybook
+
 on:
   push:
-    path:
-      paths: ["src/components/**"]
+    branches: ["main"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 jobs:
   build-and-deploy:
     environment:
       name: github-pages
-      url: ${{ step.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node.js ⚙️
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-          cache: 'yarn'
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v3
+      - run: npm i yarn
       - name: Install 🔧
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
-      - name: Build 🔧
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build:storybook
+        run:
+          yarn
+          yarn build:storybook
       - name: Upload ⬆️
         uses: actions/upload-pages-artifact@v1
         with:

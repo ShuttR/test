@@ -1,0 +1,55 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/typescript",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "semi": "off",
+        "@typescript-eslint/semi": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/default-props-match-prop-types": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/extensions": "off"
+    },
+    "overrides": [{
+        "files": [
+            "*.stories.tsx",
+            "*.spec.tsx"
+        ],
+        "rules": {
+            "import/no-extraneous-dependencies": "off"
+        }
+    }, {
+        "files": ["*.ts"],
+        "rules": {
+            "no-restricted-exports": "off"
+        }
+    }],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
+}

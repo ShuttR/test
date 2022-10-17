@@ -1,0 +1,28 @@
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  width: fit-content;
+  padding: 16px 24px;
+  cursor: pointer;
+  user-select: none;
+
+  &.selected {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  & .label {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  & .subLabel {
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  & .icon {}
+
+}

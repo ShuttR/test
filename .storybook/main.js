@@ -8,6 +8,10 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-postcss',
+    '@storybook/preset-scss',
   ],
   framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  }
 }

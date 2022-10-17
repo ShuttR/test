@@ -1,0 +1,30 @@
+name: Check Quality
+
+on:
+  pull_request_target:
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - run: npm i yarn
+      - name: Install 🔧
+        run:
+          yarn
+      - name: Launch Linter 👌
+          yarn lint
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - run: npm i yarn
+      - name: Install 🔧
+        run:
+          yarn
+      - name: Launch Tests 🧪
+        run:
+          yarn test
