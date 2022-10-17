@@ -15,6 +15,7 @@ jobs:
         run:
           yarn
       - name: Launch Linter 👌
+        run:
           yarn lint
   tests:
     runs-on: ubuntu-latest
